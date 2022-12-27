@@ -39,7 +39,7 @@ public class MainApp {
          System.out.println();
       }
 
-      System.out.println(userService.findUser("Nissan", 12).getId());
+      System.out.println(userService.findUser("Nissan", 12));
 
       context.close();
    }
