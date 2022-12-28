@@ -36,24 +36,6 @@ public class UserDaoImp implements UserDao {
       }
    }
 
-   @Override
-   @SuppressWarnings("unchecked")
-   public User findUser(String carModel, int carSeries) {
-      List<Car> carsList = sessionFactory.getCurrentSession()
-              .createQuery("FROM Car WHERE model = :carModel AND series = :carSeries")
-              .setParameter("carModel", carModel)
-              .setParameter("carSeries", carSeries)
-              .getResultList();
-      if (!carsList.isEmpty()) {
-         Car car = carsList.get(0);
-         List<User> usersList = listUsers();
-         User owner = usersList.stream()
-                 .filter(user -> user.getId() == car.getId().intValue())
-                 .findFirst()
-                 .orElse(null);
-         return owner;
-      }
-      return null;
-   }
+
 
 }
